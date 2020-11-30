@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.duzi55.music.dao.AdminMapper">
+    <!-- 相当于封装一个公共的对象   -->
+    <resultMap id="BaseResultMap" type="com.duzi55.music.domain.Admin">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+    </resultMap>
+<!-- 验证密码   -->
+    <select id="verifyPassword" resultType="java.lang.Integer">
+        select count(*) from admin where name =#{username} and password =#{password}
+    </select>
+</mapper>
